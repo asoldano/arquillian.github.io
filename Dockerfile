@@ -56,7 +56,14 @@ RUN bash -l -c "rvm use $RUBY_VERSION"
 RUN bash -l -c "rvm cleanup all"
 
 # Install Rake and Bundler for driving the Awestruct build & site
-RUN bash -l -c "gem install -N bundler rake"
+RUN bash -l -c "gem install -N bundler -v 2.3.27"
+RUN bash -l -c "gem install -N rake"
+
+RUN bash -l -c "gem install -N parallel -v 1.19.2"
+RUN bash -l -c "gem install -N ffi -v 1.13.1"
+RUN bash -l -c "gem install -N thor -v 1.0.1"
+RUN bash -l -c "gem install -N public_suffix -v 4.0.5"
+RUN bash -l -c "gem install -N domain_name -v 0.5.20190701"
 
 ENV AWESTRUCT_VERSION 0.6.1
 RUN bash -l -c "gem install awestruct -v $AWESTRUCT_VERSION"
